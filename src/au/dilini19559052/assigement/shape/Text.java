@@ -24,11 +24,15 @@ final public class Text extends IncreasableShape {
 
     @Override
     public void draw(Window window) {
-
+        for (int i = 0; i < text.length(); i++) {
+            window.putCharAt(text.charAt(i), rowBase + (i * rowIncrement), colBase + (i * colIncrement));
+        }
     }
 
     @Override
     public void clear(Window window) {
-
+        for (int i = 0; i <= text.length(); i++) {
+            window.putCharAt(' ', rowBase + (i * rowIncrement), colBase + (i * colIncrement));
+        }
     }
 }
