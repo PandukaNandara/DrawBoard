@@ -1,11 +1,11 @@
-package com.dilini19559052.assigement.shape;
+package au.dilini19559052.assigement.shape;
 
-import com.dilini19559052.assigement.board.Window;
+import au.dilini19559052.assigement.board.Window;
 
 /**
  * Created by IntelliJ IDEA.
  *
- * @author pandu
+ * @author dilini
  * Date: 2020-05-09
  * Time: 3:49 PM
  */
@@ -13,7 +13,7 @@ final public class Text extends IncreasableShape {
 
     private final String text;
 
-    protected Text(int rowBase,
+    public Text(int rowBase,
                    int colBase,
                    String text,
                    int rowIncrement,

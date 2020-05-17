@@ -1,8 +1,15 @@
-package com.dilini19559052.assigement;
+package au.dilini19559052.assigement;
 
-import com.dilini19559052.assigement.board.Window;
-import com.dilini19559052.assigement.shape.Line;
+import au.dilini19559052.assigement.board.Window;
+import au.dilini19559052.assigement.shape.Line;
 
+/**
+ * Created by IntelliJ IDEA.
+ *
+ * @author dilini
+ * Date: 2020-05-09
+ * Time: 3:00 PM
+ */
 public class Task1 {
 
     public static void main(String[] args) {

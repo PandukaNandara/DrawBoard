@@ -1,6 +1,6 @@
-package com.dilini19559052.assigement.board;
+package au.dilini19559052.assigement.board;
 
-import com.dilini19559052.assigement.shape.DrawableShape;
+import au.dilini19559052.assigement.shape.Shape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by IntelliJ IDEA.
  *
- * @author pandu
+ * @author dilini
  * Date: 2020-05-09
  * Time: 3:46 PM
  */
@@ -19,7 +19,7 @@ public class Window {
 
     private final List<List<Character>> drawBoard = new ArrayList<>();
 
-    private final List<DrawableShape> shapes = new ArrayList<>();
+    private final List<Shape> shapes = new ArrayList<>();
 
     public Window(int numberOfRows, int numberOfColumns, char borderCharacter) {
         this.numberOfRows = numberOfRows;
@@ -29,7 +29,7 @@ public class Window {
 
     }
 
-    public void addShape(DrawableShape shape){
+    public void addShape(Shape shape){
         shapes.add(shape);
     }
 
@@ -39,7 +39,7 @@ public class Window {
 
     public void display(){
         makeDrawBoarder();
-        shapes.forEach(drawableShape -> drawableShape.draw(this));
+        shapes.forEach(shape -> shape.draw(this));
         printDrawBoard();
     }
 

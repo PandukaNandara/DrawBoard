@@ -1,9 +1,9 @@
-package com.dilini19559052.assigement.shape;
+package au.dilini19559052.assigement.shape;
 
 /**
  * Created by IntelliJ IDEA.
  *
- * @author pandu
+ * @author dilini
  * Date: 2020-05-09
  * Time: 3:56 PM
  */
