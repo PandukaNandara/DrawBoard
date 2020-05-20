@@ -10,7 +10,7 @@ import au.dilini19559052.assigement.shape.*;
  * Date: 2020-05-14
  * Time: 3:00 PM
  */
-public class Task2 {
+public class T2Main {
     public static void main(String[] args) {
 
         // Create a window
@@ -35,7 +35,6 @@ public class Task2 {
         w.addShape(roof);
         // Display text message
         Text msg = new Text(2, 10, "FOR SALE", 1, 0);
-
         w.addShape(msg);
 
         w.display();

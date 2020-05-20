@@ -10,7 +10,7 @@ import au.dilini19559052.assigement.shape.Line;
  * Date: 2020-05-09
  * Time: 3:00 PM
  */
-public class Task1 {
+public class T1Main {
 
     public static void main(String[] args) {
         Window window = new Window(20, 20, '*');

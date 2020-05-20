@@ -35,10 +35,11 @@ final public class Circle extends DrawableShape {
     @Override
     protected void draw(Window window, char character) {
         for (int a = 0; a < 360; a++) {
+            double angle = a * Math.PI / 10;
             window.putCharAt(
                     character,
-                    rowBase + (int) (radius * Math.cos(Math.toRadians(a))),
-                    colBase + (int) (radius * Math.sin(Math.toRadians(a)))
+                    rowBase + (int) Math.round(radius * Math.cos(angle)),
+                    colBase + (int) Math.round(radius * Math.sin(angle))
             );
         }
     }
