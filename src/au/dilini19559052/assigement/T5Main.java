@@ -1,14 +1,12 @@
 package au.dilini19559052.assigement;
 
-import au.dilini19559052.assigement.board.Window;
 import au.dilini19559052.assigement.shape.Circle;
 import au.dilini19559052.assigement.shape.Shape;
-import au.dilini19559052.assigement.shape.Text;
 
 /**
  * Created by IntelliJ IDEA.
  *
- * @author pandu
+ * @author dilini
  * Date: 2020-05-20
  * Time: 10:07 PM
  */

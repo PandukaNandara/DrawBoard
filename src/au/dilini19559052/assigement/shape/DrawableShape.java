@@ -1,6 +1,6 @@
 package au.dilini19559052.assigement.shape;
 
-import au.dilini19559052.assigement.board.Window;
+import au.dilini19559052.assigement.Window;
 
 /**
  * Created by IntelliJ IDEA.
@@ -12,7 +12,8 @@ import au.dilini19559052.assigement.board.Window;
 
 public abstract class DrawableShape extends Shape {
 
-    protected final char drawingCharacter;
+    protected char drawingCharacter;
+
 
     protected DrawableShape(int rowBase, int colBase, char drawingCharacter) {
         super(rowBase, colBase);

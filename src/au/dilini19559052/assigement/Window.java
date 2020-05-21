@@ -1,6 +1,6 @@
-package au.dilini19559052.assigement.board;
+package au.dilini19559052.assigement;
 
-import au.dilini19559052.assigement.shape.Shape;
+import au.dilini19559052.assigement.shape.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -35,6 +35,11 @@ public class Window {
         this.borderCharacter = borderCharacter;
     }
 
+    public Window(int numberOfRows, int numberOfColumns, char borderCharacter, boolean isGridEnable) {
+        this(numberOfRows, numberOfColumns, borderCharacter);
+        this.isGridEnable = isGridEnable;
+    }
+
     public static Window readSpecFromFile(String fileName) throws FileNotFoundException {
         File file = new File(fileName);
         if (!file.canRead()) {
@@ -42,10 +47,27 @@ public class Window {
         } else {
             Scanner scanner = new Scanner(file);
 
-            Window window = new Window();
+            Window window = Window.fromData(scanner.nextLine());
 
             while (scanner.hasNext()) {
-                window.drawBoard.add(getCharList(scanner.nextLine().toCharArray()));
+                String line = scanner.nextLine();
+                switch (line.charAt(0)) {
+                    case 'C':
+                        window.addShape(Circle.fromData(line));
+                        break;
+                    case 'L':
+                        window.addShape(Line.fromData(line));
+                        break;
+                    case 'R':
+                        window.addShape(Rectangle.fromData(line));
+                        break;
+                    case 'X':
+                        window.addShape(Text.fromData(line));
+                        break;
+                    case 'T':
+                        window.addShape(Triangle.fromData(line));
+                        break;
+                }
             }
             return window;
         }
@@ -57,6 +79,24 @@ public class Window {
             characters.add(aChar);
         }
         return characters;
+    }
+
+    /**
+     * Read the circle data from string.
+     * The format is As below.
+     * W,numberOfRows,numberOfColumns,borderCharacter,isGridEnable
+     */
+    public static Window fromData(String data) {
+        String[] values = data.split(",");
+        int numberOfRows = Integer.parseInt(values[1]);
+        int numberOfColumns = Integer.parseInt(values[2]);
+        char borderCharacter = values[3].charAt(0);
+        boolean isGridEnabled = Boolean.parseBoolean(values[4]);
+        return new Window(numberOfRows, numberOfColumns, borderCharacter, isGridEnabled);
+    }
+
+    public List<Shape> getShapes() {
+        return shapes;
     }
 
     public void addGrid() {
@@ -76,24 +116,24 @@ public class Window {
     }
 
     public void display() {
-        display(System.out, shapes.size() != 0);
+        display(shapes.size() != 0);
     }
 
-    private void display(PrintStream printStream, boolean withShapes) {
+    private void display(boolean withShapes) {
+
+        makeDrawBoarder();
         if (withShapes) {
-            if(!isAlreadyCreated())
-                makeDrawBoarder();
             shapes.forEach(shape -> shape.draw(this));
         }
-        printDrawBoard(printStream);
+        printDrawBoard();
     }
 
-    private void printDrawBoard(PrintStream printStream) {
+    private void printDrawBoard() {
         for (List<Character> characters : drawBoard) {
             for (Character one : characters) {
-                printStream.print(one);
+                System.out.print(one);
             }
-            printStream.println();
+            System.out.println();
         }
     }
 
@@ -102,6 +142,7 @@ public class Window {
     }
 
     private void makeDrawBoarder() {
+        drawBoard.clear();
         int indexY = 0;
         for (int i = 0; i <= numberOfRows + 1; i++) {
             List<Character> arrayList = new ArrayList<>();
@@ -134,24 +175,44 @@ public class Window {
         }
     }
 
+    public String toData() {
+        return String.format(
+                "W,%d,%d,%s,%b",
+                numberOfRows,
+                numberOfColumns,
+                borderCharacter,
+                isGridEnable
+        );
+    }
+
+    /**
+     * The structure of the file is look like this.
+     * Window Data
+     * Shape1 data
+     * Shape2 data
+     * Shape3 data
+     * Shape4 data
+     * .
+     * .
+     * .
+     */
     public void writeSpecToFile(String fileName) throws FileNotFoundException {
         File file = new File(fileName);
         PrintStream printer = new PrintStream(file);
-        display(printer, true);
+        printer.println(this.toData());
+        for (Shape shape : shapes) {
+            printer.println(shape.toData());
+        }
+        printer.flush();
     }
 
     public void refreshImage() {
-        if (isAlreadyCreated()) {
-            for (int i = 1; i <= numberOfRows; i++) {
-                for (int j = 1; j <= numberOfColumns; j++) {
-                    drawBoard.get(i).set(j, ' ');
-                }
+        for (int i = 1; i <= numberOfRows; i++) {
+            for (int j = 1; j <= numberOfColumns; j++) {
+                drawBoard.get(i).set(j, ' ');
             }
         }
     }
 
-    private boolean isAlreadyCreated() {
-        return drawBoard.size() > numberOfRows
-            && drawBoard.get(0).size() > numberOfColumns;
-    }
+
 }

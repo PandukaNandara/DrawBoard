@@ -1,6 +1,6 @@
 package au.dilini19559052.assigement.shape;
 
-import au.dilini19559052.assigement.board.Window;
+import au.dilini19559052.assigement.Window;
 
 /**
  * Created by IntelliJ IDEA.
@@ -11,7 +11,7 @@ import au.dilini19559052.assigement.board.Window;
  */
 final public class Circle extends DrawableShape {
 
-    private final int radius;
+    private int radius;
 
     public Circle(int rowBase,
                   int colBase,
@@ -22,9 +22,35 @@ final public class Circle extends DrawableShape {
     }
 
 
+    /**
+     * Read the circle data from string.
+     * The format is As below.
+     * C,rowBase,colBase,radius,drawingCharacter
+     */
+    public static Circle fromData(String data) {
+        String[] values = data.split(",");
+        int rowBase = Integer.parseInt(values[1]);
+        int colBase = Integer.parseInt(values[2]);
+        int radius = Integer.parseInt(values[3]);
+        char drawingCharacter = values[4].charAt(0);
+        return new Circle(rowBase,colBase, radius,drawingCharacter);
+    }
+
+
     @Override
     public void draw(Window window) {
         draw(window, drawingCharacter);
+    }
+
+    @Override
+    public String toData() {
+        return String.format(
+                "C,%d,%d,%d,%s",
+                rowBase,
+                colBase,
+                radius,
+                drawingCharacter
+        );
     }
 
     @Override
@@ -48,4 +74,14 @@ final public class Circle extends DrawableShape {
         return radius;
     }
 
+    @Override
+    public String toString() {
+        return String.format(
+                "Circle (%d, %d) (%d) (%s)",
+                rowBase,
+                colBase,
+                radius,
+                drawingCharacter
+        );
+    }
 }

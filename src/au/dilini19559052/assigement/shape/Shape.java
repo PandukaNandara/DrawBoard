@@ -1,6 +1,6 @@
 package au.dilini19559052.assigement.shape;
 
-import au.dilini19559052.assigement.board.Window;
+import au.dilini19559052.assigement.Window;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,8 +10,8 @@ import au.dilini19559052.assigement.board.Window;
  * Time: 4:59 PM
  */
 public abstract class Shape {
-    protected final int rowBase;
-    protected final int colBase;
+    protected int rowBase;
+    protected int colBase;
 
     protected Shape(int rowBase, int colBase) {
         this.rowBase = rowBase;
@@ -19,6 +19,22 @@ public abstract class Shape {
     }
 
     public abstract void draw(Window window);
-
+    public abstract String toData();
     public abstract void clear(Window window);
+
+    public int getRowBase() {
+        return rowBase;
+    }
+
+    public void setRowBase(int rowBase) {
+        this.rowBase = rowBase;
+    }
+
+    public int getColBase() {
+        return colBase;
+    }
+
+    public void setColBase(int colBase) {
+        this.colBase = colBase;
+    }
 }

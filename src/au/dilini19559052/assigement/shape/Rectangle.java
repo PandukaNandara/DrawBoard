@@ -1,6 +1,6 @@
 package au.dilini19559052.assigement.shape;
 
-import au.dilini19559052.assigement.board.Window;
+import au.dilini19559052.assigement.Window;
 
 /**
  * Created by IntelliJ IDEA.
@@ -10,8 +10,8 @@ import au.dilini19559052.assigement.board.Window;
  * Time: 3:47 PM
  */
 final public class Rectangle extends DrawableShape {
-    private final int height;
-    private final int width;
+    private int height;
+    private int width;
 
     public Rectangle(int rowBase, int colBase, int height, int width, char drawingCharacter) {
         super(rowBase, colBase, drawingCharacter);
@@ -19,10 +19,34 @@ final public class Rectangle extends DrawableShape {
         this.width = width;
     }
 
+    /**
+     * Read the circle data from string.
+     * The format is As below.
+     * L,height,width,rowBase,colBase,drawingCharacter
+     */
+    public static Rectangle fromData(String data){
+        String[] values = data.split(",");
+        int height = Integer.parseInt(values[1]);
+        int width = Integer.parseInt(values[2]);
+        int rowBase = Integer.parseInt(values[3]);
+        int colBase = Integer.parseInt(values[4]);
+        char drawingCharacter = values[5].charAt(0);
+        return new Rectangle(rowBase,colBase,height,width,drawingCharacter);
+    }
 
     @Override
     public void draw(Window window) {
         draw(window, drawingCharacter);
+    }
+
+    @Override
+    public String toData() {
+        return String.format("R,%d,%d,%d,%d,%s",
+                height,
+                width,
+                rowBase,
+                colBase,
+                drawingCharacter);
     }
 
     @Override
@@ -43,6 +67,11 @@ final public class Rectangle extends DrawableShape {
         }
     }
 
+    @Override
+    public String toString() {
+        return String.format("Rectangle (%d), (%d), (%d, %d), (%s)", height, width, rowBase, colBase, drawingCharacter);
+    }
+
     public int getWidth() {
         return width;
     }
@@ -51,4 +80,11 @@ final public class Rectangle extends DrawableShape {
         return height;
     }
 
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
 }

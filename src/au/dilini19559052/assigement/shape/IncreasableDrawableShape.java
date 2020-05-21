@@ -9,13 +9,14 @@ package au.dilini19559052.assigement.shape;
  */
 public abstract class IncreasableDrawableShape extends DrawableShape {
 
-    protected final int rowIncrement;
-    protected final int colIncrement;
+    protected int rowIncrement;
+    protected int colIncrement;
+
 
     protected IncreasableDrawableShape(int rowBase, int colBase, char drawingCharacter, int rowIncrement, int colIncrement) {
         super(rowBase, colBase, drawingCharacter);
         this.rowIncrement = rowIncrement;
         this.colIncrement = colIncrement;
     }
-
+    
 }
