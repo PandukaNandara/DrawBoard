@@ -1,7 +1,3 @@
-package au.dilini19559052.assigement;
-
-import au.dilini19559052.assigement.shape.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;

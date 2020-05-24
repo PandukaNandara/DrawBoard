@@ -1,5 +1,3 @@
-package au.dilini19559052.assigement;
-
 import java.io.FileNotFoundException;
 
 /**

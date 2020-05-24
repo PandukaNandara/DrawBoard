@@ -1,7 +1,3 @@
-package au.dilini19559052.assigement.shape;
-
-import au.dilini19559052.assigement.Window;
-
 /**
  * Created by IntelliJ IDEA.
  *

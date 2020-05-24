@@ -1,8 +1,3 @@
-package au.dilini19559052.assigement;
-
-import au.dilini19559052.assigement.shape.Circle;
-import au.dilini19559052.assigement.shape.Shape;
-
 /**
  * Created by IntelliJ IDEA.
  *
